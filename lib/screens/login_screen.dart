@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/constants/app_constants.dart';
 import 'package:food_delivery/constants/color_constants.dart';
 import 'package:food_delivery/constants/image_constants.dart';
 import 'package:food_delivery/constants/styles.dart';
+import 'package:food_delivery/screens/registration_screen.dart';
 import 'package:food_delivery/utils/AppHelper.dart';
 import 'package:food_delivery/widgets/custom_text_field.dart';
 
@@ -30,18 +32,16 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: <Widget>[
                 Text(
-                  'Login',
+                  kButtonLogin,
                   style: Helper.getTheme(context).headline6,
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text('Add your details to login'),
-                SizedBox(
-                  height: 10,
-                ),
+                Text(kLabelLoginHeader2),
+                Spacer(),
                 CustomTextField(
-                  hintText: 'Your Email',
+                  hintText: kLabelYourEmailHint,
                   isPassword: false,
                 ),
                 SizedBox(
@@ -58,12 +58,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: double.infinity,
                   height: 50.0,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(LoginScreen.id);
-                    },
+                    onPressed: () {},
                     child: Text(
-                      'LOGIN',
+                      kButtonLogin,
                       style: kButtonTextStyleWhite,
                     ),
                   ),
@@ -73,15 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {},
-                  child: Text('Forgot your password?'),
+                  child: Text(kLabelForgotPassword),
                 ),
-                SizedBox(
-                  height: 80,
-                ),
-                Text('Or login with'),
-                SizedBox(
-                  height: 50,
-                ),
+                Spacer(flex: 2,),
+                Text(kLabelOrLoginWith),
+                Spacer(),
                 SizedBox(
                   height: 50,
                   child: ElevatedButton(
@@ -95,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Image.asset(kFacebookLogoImage),
                         SizedBox(width: 20),
                         Text(
-                          'Login with Facebook',
+                          kLabelLoginWithFacebook,
                           style: kButtonTextStyleWhite,
                         ),
                       ],
@@ -119,24 +112,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         Image.asset(kGoogleLogoImage),
                         SizedBox(width: 20),
                         Text(
-                          'Login with Google',
+                          kLabelLoginWithGoogle,
                           style: kButtonTextStyleWhite,
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 100,
+                Spacer(
+                  flex: 4,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed(RegistrationScreen.id);
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Don\'t have an account? '),
+                      Text(kLabelDoNotHaveAccount),
                       Text(
-                        'Sign Up',
+                        kLabelSignUp,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: AppColor.orange),

@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute: LandingScreen.id,
+        initialRoute: SplashScreen.id,
         routes: {
           SplashScreen.id: (context) => SplashScreen(),
           LandingScreen.id: (context) => LandingScreen(),
