@@ -1,25 +1,41 @@
-import 'package:flutter/material.dart';
-import 'package:food_delivery/constants/app_utils.dart';
-import 'package:food_delivery/constants/image_constants.dart';
+import 'dart:async';
 
-class SplashScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:food_delivery/constants/image_constants.dart';
+import 'package:food_delivery/screens/landing_screen.dart';
+import 'package:food_delivery/utils/AppHelper.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
   static const String id = 'splash_screen';
 
-  ///save screen dimensions to app utils
-  void getScreenDimensions(double height, double width) {
-    AppUtils.kAppHeight = height;
-    AppUtils.kAppWidth = width;
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  Timer _timer;
+
+  @override
+  void initState() {
+    _timer = Timer(Duration(seconds: 1), () {
+      Navigator.of(context).pushReplacementNamed(LandingScreen.id);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
-    getScreenDimensions(
-        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
     return Scaffold(
       body: Container(
-        width: AppUtils.kAppWidth,
-        height: AppUtils.kAppHeight,
+        width: Helper.getScreenWidth(context),
+        height: Helper.getScreenHeight(context),
         child: Stack(
           children: <Widget>[
             Container(
@@ -29,7 +45,11 @@ class SplashScreen extends StatelessWidget {
                 kSplashBackgroundImage,
                 fit: BoxFit.fill,
               ),
-            )
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(kMealMonkeyLogoImage),
+            ),
           ],
         ),
       ),
