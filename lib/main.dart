@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_delivery/constants/color_constants.dart';
+import 'constants/color_constants.dart';
+import 'screens/forget_password_screen.dart';
+import 'screens/intro_screens.dart';
+import 'screens/new_password_screen.dart';
 import 'screens/registration_screen.dart';
 import 'screens/landing_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/send_otp.dart';
 import 'screens/splash_screen.dart';
 
 void main() {
@@ -52,10 +56,15 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: SplashScreen.id,
         routes: {
+          //Authentication screen
           SplashScreen.id: (context) => SplashScreen(),
           LandingScreen.id: (context) => LandingScreen(),
           LoginScreen.id: (context) => LoginScreen(),
           RegistrationScreen.id: (context) => RegistrationScreen(),
+          ForgetPasswordScreen.id: (context) => ForgetPasswordScreen(),
+          SendOtp.id: (context) => SendOtp(),
+          NewPasswordScreen.id: (context) => NewPasswordScreen(),
+          IntroScreens.id: (context) => IntroScreens(),
         });
   }
 }
